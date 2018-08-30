@@ -11,18 +11,21 @@
 import base64
 import os
 
-import pbr.version
 from six import text_type
 from sphinx.transforms.post_transforms.images import ImageConverter
 from sphinx.util import logging
 from sphinx.util.images import guess_mimetype
 
+try:
+    import pbr.version
+    __version__ = pbr.version.VersionInfo('imageembed').version_string()
+except ImportError:
+    __version__ = '0.0.0'
+
 if False:
     # For type annotations
     from typing import Any, Dict  # noqa
     from sphinx.application import Sphinx  # noqa
-
-__version__ = pbr.version.VersionInfo('imageembed').version_string()
 
 logger = logging.getLogger(__name__)
 
