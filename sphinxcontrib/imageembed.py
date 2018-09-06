@@ -24,6 +24,7 @@ except ImportError:
 
 if False:
     # For type annotations
+    from docutils import nodes  # noqa
     from typing import Any, Dict  # noqa
     from sphinx.application import Sphinx  # noqa
 
@@ -31,6 +32,7 @@ logger = logging.getLogger(__name__)
 
 
 def _convert_to_data_uri(filename):
+    # type: (str) -> str
     encoded = base64.b64encode(open(filename, "rb").read())
     mimetype = guess_mimetype(filename, default='*')
     data_uri = 'data:{};base64,{}'.format(mimetype, encoded)
