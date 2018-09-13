@@ -11,3 +11,20 @@ install:
 - pip install tox-travis
 script:
 - tox
+stages:
+- test
+- deploy
+jobs:
+  include:
+    - stage: deploy
+      python: 3.6
+      install: skip  # no tests, no depedencies needed
+      script: skip  # we're not running tests
+      deploy:
+        provider: pypi
+        user: jangutter
+        password:
+          secure: "mw3Q8dBSVGnGa9jG1GKAVIVuLCy88oyAUDtoxGCntvJ8CaPf7+BwWADYfC1V2Q964qtTGeb/mmhrhVTtxfd+kPzdmaFH/GbaSbkHtmi8NHSN+nMRW9kOE9PSStFbJv+IhmD6vRhaxvkWFXxWBkjn4pFXJ18uSDT7nS0CBViCqT5u5JwrB2h1hu0Rtjc2rcp0kgoJJn5MlRTSsxNhrV+U2O12WXinFD+DEmsxwJtQLWbmEndUuX/B0gB0nXy1kVOoQFcnNtkJlv15AEvntiMaXS+Ngglj6ZnI+0IacKla2XRmIqwE6ib2SREXL1hlWqyKEQQbQN+yZhTidBNGP0W+QTk06IZmIgwFP6Yq3qPdo4PqD/uybegLDDlOJek/XZhsfmDtsVQGgFVjNu5LOMU7gFRH0CL0ez0t14YcWA121J4ALkm9kn89/xJsn8Rltx9tWNEpXRE7wulHBjSBEysg8FlkpnJEO3kmWMe7wXgEKnL+sawYr8jsrtO332nNIOmQUXNJg6tgiRHz+oKQoLB5sqxkY83kP9MGSWeUOH6TpbmYMzzrj2aGWEwD6ruQ6r+9c0Hsh46HgY/C89cgkdhvNPpMGINcIHryDTfTAUkZK2MYFeK6wJEMea3l/0z4q+Qsp1QvweidLFmRwBeqqikuI1HiatsIrb6gDR5EJ4GeHt0="
+        on:
+          tags: true
+        distributions: sdist bdist_wheel
