@@ -1,30 +1,29 @@
+---
 language: python
 sudo: false
 cache: pip
 python:
-- 2.7
-- 3.4
-- 3.5
-- 3.6
-- pypy
+  - 2.7
+  - 3.4
+  - 3.5
+  - 3.6
+  - pypy
 install:
-- pip install tox-travis
+  - pip install tox-travis
 script:
-- tox
+  - tox
 stages:
-- test
-- deploy
+  - test
+  - deploy
 jobs:
   include:
     - stage: deploy
       python: 3.6
-      install: skip  # no tests, no depedencies needed
-      script: skip  # we're not running tests
       deploy:
         provider: pypi
         user: jangutter
         password:
-          secure: "mw3Q8dBSVGnGa9jG1GKAVIVuLCy88oyAUDtoxGCntvJ8CaPf7+BwWADYfC1V2Q964qtTGeb/mmhrhVTtxfd+kPzdmaFH/GbaSbkHtmi8NHSN+nMRW9kOE9PSStFbJv+IhmD6vRhaxvkWFXxWBkjn4pFXJ18uSDT7nS0CBViCqT5u5JwrB2h1hu0Rtjc2rcp0kgoJJn5MlRTSsxNhrV+U2O12WXinFD+DEmsxwJtQLWbmEndUuX/B0gB0nXy1kVOoQFcnNtkJlv15AEvntiMaXS+Ngglj6ZnI+0IacKla2XRmIqwE6ib2SREXL1hlWqyKEQQbQN+yZhTidBNGP0W+QTk06IZmIgwFP6Yq3qPdo4PqD/uybegLDDlOJek/XZhsfmDtsVQGgFVjNu5LOMU7gFRH0CL0ez0t14YcWA121J4ALkm9kn89/xJsn8Rltx9tWNEpXRE7wulHBjSBEysg8FlkpnJEO3kmWMe7wXgEKnL+sawYr8jsrtO332nNIOmQUXNJg6tgiRHz+oKQoLB5sqxkY83kP9MGSWeUOH6TpbmYMzzrj2aGWEwD6ruQ6r+9c0Hsh46HgY/C89cgkdhvNPpMGINcIHryDTfTAUkZK2MYFeK6wJEMea3l/0z4q+Qsp1QvweidLFmRwBeqqikuI1HiatsIrb6gDR5EJ4GeHt0="
+          secure: F2L3qB1NtUhoKRaz67DG4gBTXr5Y76+8Qt+/dGnUuAo6iOSujJsT3GPLZrRt4VTaUVc6cQoUvTwxw+uZUdpQORxi+BuueABdj9NgRIkcubcadSFo1nCfCg3Si+cznXG5hJxkX3ptnjMYI2p9ga9iJQL8BiqhwGySDh/2kydyPHX6TdXuoBkNrTu/KV7H+4C4y1+8LwoEHnvTryX8qmXz5Dqz6ahS7DyBrWvzBxGN3Swa4RvKf+0ti9aNpp+8JjndWxQl+OYNBjHHiROS3KNElLo0t/alZwtKShPRcni3O4cAOcRrC2zyW6gf7v6KP2MW7HcBqHZU68aLEcVhRG/Z7SWo2bjsHSxTwuZiTJHCrzBg7wXLyCNFqhi5ndWZr7B82KU7pllaFU4gx4XoB/Hd9YjX5iM64GgTp2ozkxORgABnAvvDS2k3HRvbNS8T76QIGAUi2AkT9DdJwWo5N7hls1kck87Zo0Ha5fb/A9LG8mIUy2lo0ZxouMmgSQhnVULU5zPZR5JhzSnv5DLcf6YpEek844h8GTChBUcwqJQbBBrlANK1AhwP19effOBPbKR6hwxbRbWLbYcbrIBh+lPTdAXIsb5nmlrrXp8xzKoz2qoWF1ylu3QYmT+4X9TIRaDZMTUCIFiqJfW1z8HQysQzONdUSsSUYMux2RKeFnBjL7I=
         on:
           tags: true
         distributions: sdist bdist_wheel
