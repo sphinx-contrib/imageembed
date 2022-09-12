@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 
 def _convert_to_data_uri(filename):
     # type: (str) -> str
-    encoded = base64.b64encode(open(filename, "rb").read())
+    encoded = base64.b64encode(open(filename, "rb").read()).decode()
     mimetype = guess_mimetype(filename, default='*')
     data_uri = 'data:{};base64,{}'.format(mimetype, encoded)
     return data_uri
