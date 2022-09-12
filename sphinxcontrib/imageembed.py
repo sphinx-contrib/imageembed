@@ -53,8 +53,8 @@ class ImageEmbedder(ImageConverter):
         # type: (nodes.Node) -> None
         try:
             node['alt'] = node['uri']
-            basename = os.path.basename(node['uri'])
-            path = os.path.join(self.app.srcdir, basename)
+            filename = node['uri']
+            path = os.path.join(self.app.srcdir, filename)
             node['uri'] = _convert_to_data_uri(path)
         except Exception as exc:
             logger.error('Could not embed image: %s [%s]' % (node['alt'],
