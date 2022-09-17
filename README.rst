@@ -2,8 +2,8 @@
 sphinxcontrib.imageembed
 ========================
 
-.. image:: https://travis-ci.org/sphinx-contrib/imageembed.svg?branch=master
-    :target: https://travis-ci.org/sphinx-contrib/imageembed
+.. image:: https://github.com/sphinx-contrib/imageembed/actions/workflows/tests.yml/badge.svg?branch=master
+    :target: https://github.com/sphinx-contrib/imageembed/actions/workflows/tests.yml
 
 Embed images directly into generated html docs.
 
